@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="title">Sir Reads A Lot</string>
-	<string name="touchplay">Toque la pantalla para jugar!</string>
+	<string name="touchplay">Pase hacia arriba o hacia abajo para jugar!</string>
 	<!-- Sílabas en Español via http://tip.dis.ulpgc.es/silabas/default.aspx -->
 	<string name="q_01">tiempo</string>
 	<string name="a_01">2</string>

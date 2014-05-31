@@ -23,32 +23,112 @@ function FirstView() {
 	});
 	self.add(cards);
 
-	var count = 0;
+	var sylCount = 0;
+	Ti.API.info('init sylCount: '+sylCount);
+
+	var syllables = Ti.UI.createLabel({
+		//color:'#000000',
+		text: '',
+		backgroundColor: '#F66',
+		textAlign: 'center',
+		bottom: 20,
+		width: Ti.UI.FILL,
+		height: 'auto'
+	});
+	self.add(syllables);
+
+	var cardCount = 0;
+	Ti.API.info('init cardCount: '+cardCount);
+	
 	var answer;
 	var player = Ti.Media.createSound();
 	
-	//Add behavior for UI
-	cards.addEventListener('click', function(e) {
-		count++;
-		if (count % 2 == 1){
-			//display question, randomly
-			var tempData = questions.getData();
-			var data = tempData[Math.floor(Math.random() * tempData.length)];
-			this.text = 'How many syllables?\n\n' + Ti.Locale.getString(data.q);
-			this.backgroundColor = '#777';
+	function updateCard() {
+		
+		cardCount++;
+		// Ti.API.info('add cardCount: '+cardCount);
+		
+		//syllables.text = sylCount;
+		syllables.setText(sylCount);
+		
+		var tempData = questions.getData();
+		
+		//select data randomly from QuestionData obj
+		var data = tempData[Math.floor(Math.random() * tempData.length)];
+		
+		if (cardCount % 2 == 1){
+			
+			Ti.App.Properties.setString('audioStr', Ti.Locale.getString(data.v));
+			
+			//display question
+			//cards.text = 'How many syllables?\n\n' + Ti.Locale.getString(data.q);
+			cards.setText('How many syllables?\n\n' + Ti.Locale.getString(data.q));
+			
+			cards.backgroundColor = '#777';
+			
+			//update answer to this question
 			answer = Ti.Locale.getString(data.a) + '\n\n' + Ti.Locale.getString(data.s);
 			
+			function playAudio(){
+				player = Ti.Media.createSound({url: Ti.App.Properties.getString('audioStr')});
+				player.play();
+				//player.reset();
+				//player.release();
+			}
+			
 			//play audio of the word
-			player = Ti.Media.createSound({url:Ti.Locale.getString(data.v)}); // url:'/db/tts/en/v_01.mp3'
-			player.play();
-			//player.reset();
-			//player.release();
+			playAudio();
+			
 		} else {
+
+			//play audio of the word
+			playAudio();
+			
 			//display answer
-			this.text = answer;
-			this.backgroundColor = '#F66';
+			cards.setText(answer); //cards.text = answer;
+			cards.backgroundColor = '#F66';
+			syllables.setText('');
+
+		}
+	}
+
+	//Add behavior for UI
+	cards.addEventListener('swipe', function(e) {
+		
+		//execute when swipe direction is 'left' or 'right' 
+		if(cardCount == 0 && (e.direction == 'up' || e.direction == 'down')){ //
+			
+			updateCard();
+			
+		} else if (cardCount !== 0 && syllables.text !== '' && (e.direction == 'up')) {
+
+			sylCount++;
+			//syllables.text = sylCount;
+			syllables.setText(sylCount); 
+
+		} else if (cardCount !== 0 && syllables.text !== '' && (e.direction == 'down')) {
+			
+			if(sylCount !== 0){
+				
+				sylCount--;
+				//syllables.text = sylCount;
+				syllables.setText(sylCount);
+					
+			}
+		} else if (cardCount !== 0 && sylCount !== 0 && syllables.text !== 0 && syllables.text !== '' && (e.direction == 'left' || e.direction == 'right')) {
+
+			Ti.API.info('display answer');
+			updateCard();
+
+		} else if((cardCount !== 0 && sylCount !== 0) && syllables.text == '' && (e.direction == 'left' || e.direction == 'right')) {
+
+			Ti.API.info('next question');
+			sylCount = 0;
+			updateCard();
+
 		}
 	});
+	
 	return self;
 }
 

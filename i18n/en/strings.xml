@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="title">Sir Reads A Lot</string>
-	<string name="touchplay">Touch the screen to play!</string>
+	<string name="touchplay">Swipe up or down to play!</string>
 	<!-- 100 Most Common English Nouns via http://www.linguasorb.com/en/english/most-common-nouns -->
 	<string name="q_01">time</string>
 	<string name="a_01">1</string>
