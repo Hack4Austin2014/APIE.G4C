@@ -28,7 +28,7 @@
 	<string name="s_06">hom-bre</string>
 	<string name="v_06">/db/tts/es/v_06.mp3</string>
 	<string name="q_07">cosa</string>
-	<string name="a_07">1</string>
+	<string name="a_07">2</string>
 	<string name="s_07">co-sa</string>
 	<string name="v_07">/db/tts/es/v_07.mp3</string>
 	<string name="q_08">mujer</string>
@@ -368,7 +368,7 @@
 	<string name="s_89">par-ti-do</string>
 	<string name="v_89">/db/tts/es/v_89.mp3</string>
 	<string name="q_90">resultado</string>
-	<string name="a_90">3</string>
+	<string name="a_90">4</string>
 	<string name="s_90">re-sul-ta-do</string>
 	<string name="v_90">/db/tts/es/v_90.mp3</string>
 

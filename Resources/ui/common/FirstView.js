@@ -111,12 +111,12 @@ function FirstView() {
 			syllables.setText(sylCount); 
 
 		} else if (cardCount !== 0 && syllables.text !== '' && (e.direction == 'down')) {
-			
+
 			if(sylCount !== 0){
-				
+
 				sylCount--;
 				syllables.setText(sylCount);
-					
+
 			}
 		} else if (cardCount !== 0 && sylCount !== 0 && syllables.text !== 0 && syllables.text !== '' && (e.direction == 'left' || e.direction == 'right')) {
 
