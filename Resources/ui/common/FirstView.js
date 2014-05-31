@@ -15,9 +15,7 @@ function FirstView() {
 		//backgroundImage: '/images/bg_old_wood_frame_4_4.png',
 		//backgroundRepeat: true,
 		textAlign: 'center',
-		//borderRadius: 4,
-		//top: 100,
-		// left: 10,
+		//borderRadius: 10,
 		width: Ti.UI.FILL,
 		height: Ti.UI.FILL
 	});
@@ -46,9 +44,7 @@ function FirstView() {
 	function updateCard() {
 		
 		cardCount++;
-		// Ti.API.info('add cardCount: '+cardCount);
 		
-		//syllables.text = sylCount;
 		syllables.setText(sylCount);
 		
 		var tempData = questions.getData();
@@ -61,7 +57,6 @@ function FirstView() {
 			Ti.App.Properties.setString('audioStr', Ti.Locale.getString(data.v));
 			
 			//display question
-			//cards.text = 'How many syllables?\n\n' + Ti.Locale.getString(data.q);
 			cards.setText('How many syllables?\n\n' + Ti.Locale.getString(data.q));
 			
 			cards.backgroundColor = '#777';
@@ -71,7 +66,10 @@ function FirstView() {
 			
 			function playAudio(){
 				player = Ti.Media.createSound({url: Ti.App.Properties.getString('audioStr')});
-				player.play();
+				
+				setTimeout(function(){
+					player.play();
+				}, 500);
 				//player.reset();
 				//player.release();
 			}
@@ -85,10 +83,9 @@ function FirstView() {
 			playAudio();
 			
 			//display answer
-			cards.setText(answer); //cards.text = answer;
+			cards.setText(answer);
 			cards.backgroundColor = '#F66';
 			syllables.setText('');
-
 		}
 	}
 
@@ -103,7 +100,6 @@ function FirstView() {
 		} else if (cardCount !== 0 && syllables.text !== '' && (e.direction == 'up')) {
 
 			sylCount++;
-			//syllables.text = sylCount;
 			syllables.setText(sylCount); 
 
 		} else if (cardCount !== 0 && syllables.text !== '' && (e.direction == 'down')) {
@@ -111,7 +107,6 @@ function FirstView() {
 			if(sylCount !== 0){
 				
 				sylCount--;
-				//syllables.text = sylCount;
 				syllables.setText(sylCount);
 					
 			}
