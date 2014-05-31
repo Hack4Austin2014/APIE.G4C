@@ -10,7 +10,7 @@ function FirstView() {
 	//label using localization-ready strings from <app dir>/i18n/en/strings.xml
 	var cards = Ti.UI.createLabel({
 		//color:'#000000',
-		text: Ti.Locale.getString('title') + '\n\n' + Ti.Locale.getString('touchplay'),
+		text: L('title') + '\n\n' + L('touchplay'),
 		backgroundColor: '#F66',
 		//backgroundImage: '/images/bg_old_wood_frame_4_4.png',
 		//backgroundRepeat: true,
@@ -39,9 +39,10 @@ function FirstView() {
 	Ti.API.info('init cardCount: '+cardCount);
 	
 	var answer;
+	var answerText;
 	var player = Ti.Media.createSound();
 	
-	function updateCard() {
+	function updateCard(arg) {
 		
 		cardCount++;
 		
@@ -54,16 +55,17 @@ function FirstView() {
 		
 		if (cardCount % 2 == 1){
 			
-			Ti.App.Properties.setString('audioStr', Ti.Locale.getString(data.v));
+			Ti.App.Properties.setString('audioStr', L(data.v));
 			
 			//display question
-			cards.setText('How many syllables?\n\n' + Ti.Locale.getString(data.q));
+			cards.setText('How many syllables?\n\n' + L(data.q));
 			
 			cards.backgroundColor = '#777';
 			
 			//update answer to this question
-			answer = Ti.Locale.getString(data.a) + '\n\n' + Ti.Locale.getString(data.s);
-			
+			answer = L(data.a);
+			answerText = L(data.a) + '\n\n' + L(data.s);
+						
 			function playAudio(){
 				player = Ti.Media.createSound({url: Ti.App.Properties.getString('audioStr')});
 				
@@ -73,17 +75,23 @@ function FirstView() {
 				//player.reset();
 				//player.release();
 			}
-			
+
 			//play audio of the word
 			playAudio();
 			
 		} else {
 
+			if(arg == answer){
+				alert('Correct!');
+			} else {
+				alert('Oops! The correct answer was, '+answer+'.');
+			}
+
 			//play audio of the word
 			playAudio();
 			
 			//display answer
-			cards.setText(answer);
+			cards.setText(answerText);
 			cards.backgroundColor = '#F66';
 			syllables.setText('');
 		}
@@ -113,7 +121,7 @@ function FirstView() {
 		} else if (cardCount !== 0 && sylCount !== 0 && syllables.text !== 0 && syllables.text !== '' && (e.direction == 'left' || e.direction == 'right')) {
 
 			Ti.API.info('display answer');
-			updateCard();
+			updateCard(sylCount);
 
 		} else if((cardCount !== 0 && sylCount !== 0) && syllables.text == '' && (e.direction == 'left' || e.direction == 'right')) {
 
