@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+	<!-- In-App Messages -->
 	<string name="title">Sir Reads A Lot</string>
-	<string name="touchplay">Swipe up or down to play!</string>
+	<string name="touchplay">Swipe here to play!</string>
+	<string name="howmany">How many syllables?</string>
+	<string name="answerwas">Answer was,</string>
+	<string name="goodjob">Good job!</string>
+	<string name="tryagainoncemore">Try again, you can do it!</string>
+	<string name="correct">Correct!</string>
+	<string name="tryagain">Try again.</string>
 	<!-- 100 Most Common English Nouns via http://www.linguasorb.com/en/english/most-common-nouns -->
 	<string name="q_01">time</string>
 	<string name="a_01">1</string>

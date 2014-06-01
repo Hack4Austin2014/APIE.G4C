@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+	<!-- In-App Messages -->
 	<string name="title">Sir Reads A Lot</string>
-	<string name="touchplay">Pase hacia arriba o hacia abajo para jugar!</string>
+	<string name="touchplay">Pase aquí para jugar!</string>
+	<string name="howmany">¿Cuántas sílabas?</string>
+	<string name="answerwas">Respuesta fue,</string>
+	<string name="goodjob">¡Buen trabajo!</string>
+	<string name="tryagainoncemore">Inténtalo de nuevo, usted puede hacerlo!</string>
+	<string name="correct">¡Correcto!</string>
+	<string name="tryagain">Incorrecta</string>
 	<!-- Sílabas en Español via http://tip.dis.ulpgc.es/silabas/default.aspx -->
 	<string name="q_01">tiempo</string>
 	<string name="a_01">2</string>

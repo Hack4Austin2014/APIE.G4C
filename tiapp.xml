@@ -24,8 +24,6 @@
                 <array>
                     <string>UIInterfaceOrientationPortrait</string>
                     <string>UIInterfaceOrientationPortraitUpsideDown</string>
-                    <string>UIInterfaceOrientationLandscapeLeft</string>
-                    <string>UIInterfaceOrientationLandscapeRight</string>
                 </array>
                 <key>UIRequiresPersistentWiFi</key>
                 <false/>
@@ -53,7 +51,7 @@
         <target device="blackberry">false</target>
         <target device="ipad">false</target>
         <target device="iphone">true</target>
-        <target device="mobileweb">true</target>
+        <target device="mobileweb">false</target>
         <target device="tizen">false</target>
     </deployment-targets>
     <sdk-version>3.2.3.GA</sdk-version>
