@@ -1,0 +1,11 @@
+android/ATTR_MINIFY=true
+android/ATTR_PROJECT_NAME=Sir Reads A Lot
+android/abi=armeabi
+android/distribute_path=/Users/leejaew/Desktop
+android/key_password=my37adev
+android/keystore_alias=releasekey
+android/keystore_password=my37adev
+android/keystore_path=/Users/leejaew/keys/my-release-key.keystore
+android/recent_output=/Users/leejaew/Desktop
+android/sdk_version=2.3.3
+eclipse.preferences.version=1

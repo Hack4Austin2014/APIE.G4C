@@ -1,6 +1,8 @@
 //FirstView Component Constructor
 function FirstView() {
 		
+	var isAndroid = (Ti.Platform.osname=='android') ? true : false;
+	
 	//load question data array
 	var questions = require('ui/common/QuestionData');
 	
@@ -34,7 +36,7 @@ function FirstView() {
 		color:'#fff',
 		text: L('touchplay'),
 		font: {
-			fontSize: '20pt',
+			fontSize: (isAndroid) ? 16 : '20pt',
 			fontFamily: 'Helvetica Neue'
 		},
 		//backgroundColor: '#fff',
@@ -52,14 +54,14 @@ function FirstView() {
 		color:'#Fff',
 		text: '',
 		font: {
-			fontSize: '30pt',
+			fontSize: (isAndroid) ? 22 : '30pt',
 			fontWeight: 'bold',
 			fontFamily: 'Helvetica Neue'
 		},
 		//backgroundColor: '#fff', //'#ccc',
 		textAlign: 'center',
 		top: 150,
-		width: '50%',
+		width: '80%',
 		height: 50
 	});
 	self.add(syllables);
@@ -68,14 +70,14 @@ function FirstView() {
 		color:'#Fff',
 		text: '',
 		font: {
-			fontSize: '30pt',
+			fontSize: (isAndroid) ? 22 : '30pt',
 			fontWeight: 'bold',
 			fontFamily: 'Helvetica Neue'
 		},
 		//backgroundColor: '#fff', //'#ccc',
 		textAlign: 'center',
 		top: 150,
-		width: '50%',
+		width: '80%',
 		height: 50
 	});
 	self.add(message);
@@ -266,6 +268,19 @@ function FirstView() {
 	});
 	
 	syllables.addEventListener('click', function(){
+		if(cardCount !== 0 && sylCount !== 0 && syllables.text !== 0 && syllables.text !== ''){
+			//Ti.API.info('display answer');
+			updateCard(sylCount);
+		}else if((cardCount !== 0 && sylCount !== 0) && syllables.text == ''){
+			message.setText('');
+			sfxWarp.play();
+			//Ti.API.info('next question');
+			sylCount = 0;
+			updateCard();
+		}
+	});
+	
+	message.addEventListener('click', function(){
 		if(cardCount !== 0 && sylCount !== 0 && syllables.text !== 0 && syllables.text !== ''){
 			//Ti.API.info('display answer');
 			updateCard(sylCount);
